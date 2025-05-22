@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMS - 製造業向け利益改善サービス</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-blue {
+      color: #2563eb;
+    }
+
+    .text-green {
+      color: #10b981;
+    }
+
+    .text-white {
+      color: #fff;
+    }
+
+    .text-gray {
+      color: #6b7280;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+
+    .mb-12 {
+      margin-bottom: 3rem;
+    }
+
+    .mb-16 {
+      margin-bottom: 4rem;
+    }
+
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+
+    .mt-4 {
+      margin-top: 1rem;
+    }
+
+    .mt-6 {
+      margin-top: 1.5rem;
+    }
+
+    .mt-8 {
+      margin-top: 2rem;
+    }
+
+    .mt-10 {
+      margin-top: 2.5rem;
+    }
+
+    .mt-12 {
+      margin-top: 3rem;
+    }
+
+    .mt-16 {
+      margin-top: 4rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .py-2 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .py-12 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .py-16 {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .py-20 {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .px-6 {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .px-8 {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .p-4 {
+      padding: 1rem;
+    }
+
+    .p-8 {
+      padding: 2rem;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #1f2937;
+    }
+
+    .logo i {
+      color: #2563eb;
+    }
+
+    nav {
+      display: none;
+    }
+
+    nav a {
+      color: #6b7280;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #1f2937;
+    }
+
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      padding: 0.625rem 1.25rem;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(37, 99, 235, 0.05);
+    }
+
+    .btn-lg {
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 5rem 0 7rem;
+      background: linear-gradient(to bottom, #f9fafb, #fff);
+      text-align: center;
+    }
+
+    .hero h1 {
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .hero-highlight {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 0.25rem;
+      left: 0;
+      width: 100%;
+      height: 0.75rem;
+      background-color: rgba(191, 219, 254, 0.5);
+      border-radius: 0.25rem;
+      z-index: -1;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 28rem;
+      margin: 2.5rem auto 0;
+    }
+
+    .hero-image {
+      position: relative;
+      margin-top: 4rem;
+      max-width: 64rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-image img {
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-white {
+      background-color: #fff;
+    }
+
+    .section-gray {
+      background: linear-gradient(to bottom, #f9fafb, #fff);
+    }
+
+    .section-blue {
+      background-color: #eff6ff;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-divider {
+      height: 0.25rem;
+      width: 5rem;
+      background-color: #2563eb;
+      margin: 1rem auto;
+      border-radius: 9999px;
+    }
+
+    /* Cards */
+    .card {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+
+    .card-highlight {
+      border-top: 4px solid #2563eb;
+    }
+
+    .card-header {
+      padding: 1.5rem 1.5rem 0.5rem;
+    }
+
+    .card-content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: 1fr;
+    }
+
+    /* Flex */
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-8 {
+      gap: 2rem;
+    }
+
+    /* Icons */
+    .icon-circle {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      background-color: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    .icon-circle i {
+      color: #2563eb;
+      font-size: 1.5rem;
+    }
+
+    .icon-sm {
+      width: 1rem;
+      height: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Feature List */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .feature-item i {
+      color: #2563eb;
+      margin-top: 0.25rem;
+    }
+
+    /* Panels */
+    .panel {
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .panel-gray {
+      background-color: #f9fafb;
+    }
+
+    .panel-blue {
+      background-color: #eff6ff;
+    }
+
+    .panel-green {
+      background-color: #ecfdf5;
+    }
+
+    /* Accordion */
+    .accordion {
+      width: 100%;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      text-align: left;
+      background: none;
+      border: none;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .accordion-content {
+      padding: 0 0 1rem;
+      display: none;
+    }
+
+    .accordion-content.active {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1f2937;
+      color: #d1d5db;
+      padding: 3rem 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-heading {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #374151;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    /* Media Queries */
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      nav {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+      }
+
+      .grid-cols-2-md {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-cols-3-md {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid-cols-4-md {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .flex-row-md {
+        flex-direction: row;
+      }
+
+      .w-1-2-md {
+        width: 50%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 0 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <i class="fas fa-cogs"></i>
+          <span>AMS</span>
+        </div>
+        <nav>
+          <a href="#problem">課題</a>
+          <a href="#solution">サービス</a>
+          <a href="#benefits">メリット</a>
+          <a href="#cases">事例</a>
+          <a href="#faq">よくある質問</a>
+        </nav>
+        <a href="#contact" class="btn btn-primary" style="display: none;">無料相談はこちら</a>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>
+        <span class="hero-highlight">売ってるのに、</span>
+        <span class="hero-highlight">儲からない。</span>
+      </h1>
+      <p class="mt-6 text-xl text-gray">
+        それ、営業じゃなくて<span class="font-bold text-blue">"構造"</span>の問題かもしれません
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary btn-lg btn-full">
+          無料で相談する
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+        <a href="#solution" class="btn btn-outline btn-lg btn-full">
+          サービス詳細を見る
+        </a>
+      </div>
+      <div class="hero-image">
+        <img src="https://placehold.co/1200x600/f1f5f9/a3a3a3?text=製造業の利益構造改善イメージ" alt="製造業の利益構造改善イメージ">
+        <div class="hero-badge">
+          中小製造業の経営者様向け
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section id="problem" class="section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          こんな<span class="text-blue">お悩み</span>はありませんか？
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-3-md">
+        <div class="card card-highlight">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-file-alt text-blue"></i>
+              見積は感覚で出している
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="text-gray">
+              「この程度の単価なら大丈夫だろう」と勘や経験で見積を出していて、実際の原価や粗利が見えていない状態です。
+            </p>
+          </div>
+        </div>
+
+        <div class="card card-highlight">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-chart-bar text-blue"></i>
+              黒字なのに資金が増えない
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="text-gray">
+              税理士からは「黒字です」と言われるのに、なぜか手元に資金が残らず、経営が苦しい状況が続いています。
+            </p>
+          </div>
+        </div>
+
+        <div class="card card-highlight">
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fas fa-users text-blue"></i>
+              営業が属人化している
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="text-gray">
+              営業活動が特定の人の経験や人間関係に依存しており、組織的な営業の仕組みができていません。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 p-8 panel panel-gray">
+        <div class="flex flex-col flex-row-md gap-8">
+          <div class="w-1-2-md">
+            <h3 class="text-2xl font-bold mb-4">
+              製造業の<span class="text-blue">構造的な問題</span>
+            </h3>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>会計・営業・原価管理がバラバラで連動していない</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>何で儲かって何で損しているのか把握できていない</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>税理士には相談しづらい営業や見積の問題がある</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>売上は増えているのに利益率が下がっている</span>
+              </li>
+            </ul>
+          </div>
+          <div class="w-1-2-md">
+            <img src="https://placehold.co/500x300/f1f5f9/a3a3a3?text=製造業の構造的問題" alt="製造業の構造的問題" class="rounded-lg shadow">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section id="solution" class="section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          AMSが<span class="text-blue">できること</span>
+        </h2>
+        <p class="mt-4 text-lg text-gray max-w-2xl mx-auto">
+          営業・原価・会計がつながっておらず、「何で儲かって何で損してるか分からない」状態から、
+          <span class="font-bold">"儲かる構造"</span>を再設計します。
+        </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-3-md gap-8 mt-12">
+        <div class="card" style="position: relative; overflow: hidden; border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background-color: #2563eb;"></div>
+          <div class="card-header pb-2">
+            <div class="icon-circle">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3 class="card-title">粗利設計からの見積標準化</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-gray mb-4">
+              感覚や勘に頼っていた見積を、原価と適正粗利に基づいた標準化された仕組みに変換します。
+            </p>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">製品・サービスごとの原価を明確化</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">適正な粗利率の設定と見積への反映</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">誰でも使える見積テンプレートの構築</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="position: relative; overflow: hidden; border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background-color: #2563eb;"></div>
+          <div class="card-header pb-2">
+            <div class="icon-circle">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="card-title">営業〜会計の一体設計</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-gray mb-4">
+              バラバラだった営業活動と会計を連動させ、経営判断に必要な情報をリアルタイムで把握できる状態を作ります。
+            </p>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">MFなどのツールを活用した情報連携</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">営業活動と財務状況の見える化</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">データに基づいた経営判断の実現</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="position: relative; overflow: hidden; border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+          <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background-color: #2563eb;"></div>
+          <div class="card-header pb-2">
+            <div class="icon-circle">
+              <i class="fas fa-arrow-trend-up"></i>
+            </div>
+            <h3 class="card-title">利益が"見える"経営への転換</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-gray mb-4">
+              売上ではなく「残す利益」を中心とした経営判断ができる体制を構築し、持続的な成長を実現します。
+            </p>
+            <ul class="feature-list">
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">利益率の高い製品・サービスの特定</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">経営資源の最適配分の実現</span>
+              </li>
+              <li class="feature-item">
+                <i class="fas fa-check-circle icon-sm"></i>
+                <span class="text-sm">社長だけでなく組織全体での利益意識の醸成</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits" class="section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          AMSによって得られる<span class="text-blue">メリット</span>
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-md gap-10">
+        <div class="flex gap-4">
+          <div class="icon-circle">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">「売れてるのに通帳が増えない」状態から抜け出せる</h3>
+            <p class="text-gray">
+              売上と利益の関係を明確にし、実際に手元に残る資金を増やすための構造改革を実現します。黒字倒産のリスクを大幅に低減できます。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="icon-circle">
+            <i class="fas fa-clipboard-check"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">勘で出していた見積が、粗利ベースで設計できるようになる</h3>
+            <p class="text-gray">
+              感覚や経験に頼っていた見積プロセスを、原価と適正粗利に基づいた科学的なアプローチに変換。利益を確保した見積が誰でも作成できるようになります。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="icon-circle">
+            <i class="fas fa-chart-bar"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">営業活動と会計がつながり、経営判断がクリアになる</h3>
+            <p class="text-gray">
+              これまでバラバラだった営業活動と会計情報を連動させることで、リアルタイムでの経営状況把握が可能に。的確な意思決定ができるようになります。
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="icon-circle">
+            <i class="fas fa-users"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">営業の成果を数字で見える化できるようになる</h3>
+            <p class="text-gray">
+              営業担当者ごとの売上だけでなく、粗利や利益率も可視化。属人的だった営業活動を組織の資産として蓄積・活用できるようになります。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 p-8 panel panel-blue">
+        <div class="flex flex-col flex-row-md gap-8">
+          <div class="w-1-2-md">
+            <h3 class="text-2xl font-bold mb-4">
+              <span class="text-blue">何に力を入れるべきか</span>が明確になります
+            </h3>
+            <p class="text-gray mb-6">
+              利益率の低い案件を特定し、経営資源を効率的に配分することで、同じ労力でより多くの利益を生み出す体制を構築します。
+            </p>
+            <a href="#contact" class="btn btn-primary btn-lg">
+              無料相談で詳しく聞く
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+          <div class="w-1-2-md">
+            <img src="https://placehold.co/500x300/eff6ff/a3a3a3?text=経営資源の最適配分" alt="経営資源の最適配分" class="rounded-lg shadow">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="cases" class="section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          <span class="text-blue">導入事例</span>
+        </h2>
+        <p class="mt-4 text-lg text-gray max-w-2xl mx-auto">
+          AMSを導入した企業様の具体的な変化をご紹介します
+        </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-2-md gap-8">
+        <div class="card" style="border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+          <div class="card-header">
+            <h3 class="card-title">金属加工業 A社様</h3>
+            <p class="card-description">従業員30名 / 年商3億円</p>
+          </div>
+          <div class="card-content">
+            <div class="space-y-4">
+              <div class="panel panel-gray">
+                <h4 class="font-bold text-gray-800 mb-2">課題</h4>
+                <p class="text-gray">
+                  売上は順調に伸びているのに、利益率が年々低下。見積は経験豊富な営業担当者の感覚で決めており、原価計算が曖昧だった。
+                </p>
+              </div>
+              <div class="panel panel-blue">
+                <h4 class="font-bold mb-2" style="color: #1e40af;">AMSによる改善</h4>
+                <ul class="feature-list">
+                  <li class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>製品別の原価を明確化し、見積テンプレートを整備</span>
+                  </li>
+                  <li class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>利益率の低い製品を特定し、価格改定を実施</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="panel panel-green">
+                <h4 class="font-bold mb-2" style="color: #065f46;">結果</h4>
+                <p class="text-gray font-bold">
+                  見積の単価を見直しただけで、粗利が前年比で<span class="text-green">約2倍</span>に向上
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);">
+          <div class="card-header">
+            <h3 class="card-title">精密機器製造 B社様</h3>
+            <p class="card-description">従業員15名 / 年商1.5億円</p>
+          </div>
+          <div class="card-content">
+            <div class="space-y-4">
+              <div class="panel panel-gray">
+                <h4 class="font-bold text-gray-800 mb-2">課題</h4>
+                <p class="text-gray">
+                  税理士からは「黒字経営」と言われるが資金繰りが常に厳しい状態。営業担当者ごとの実績は売上だけで評価していた。
+                </p>
+              </div>
+              <div class="panel panel-blue">
+                <h4 class="font-bold mb-2" style="color: #1e40af;">AMSによる改善</h4>
+                <ul class="feature-list">
+                  <li class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>営業管理システムと会計システムを連携</span>
+                  </li>
+                  <li class="feature-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>営業担当者ごとの粗利率を可視化する仕組みを構築</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="panel panel-green">
+                <h4 class="font-bold mb-2" style="color: #065f46;">結果</h4>
+                <p class="text-gray font-bold">
+                  営業評価基準を変更したことで、全体の利益率が<span class="text-green">15%向上</span>
+                  し、資金繰りが安定
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strengths Section -->
+  <section class="section-white">
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          AMSの<span class="text-blue">強み</span>
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="grid grid-cols-1 grid-cols-3-md gap-8">
+        <div class="card">
+          <div class="card-header">
+            <div class="icon-circle">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="card-title">利益構造の再設計</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-gray">
+              会計だけでも営業だけでもない、企業全体の「利益を生み出す構造」を総合的に設計します。部分最適ではなく全体最適を実現します。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="icon-circle">
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3 class="card-title">実行型支援</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-gray">
+              単なるツール導入やアドバイスで終わらず、現場に入り込んで一緒に実行まで伴走。確実に成果を出すための実践的なアプローチを取ります。
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="icon-circle">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="card-title">現場理解型チーム</h3>
+          </div>
+          <div class="card-content">
+            <p class="text-gray">
+              製造業の現場を熟知したスタッフが対応。理論だけでなく、実際の製造現場の状況を踏まえた実践的なソリューションを提供します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section-gray">
+    <div class="container">
+      <div class="section-header">
+        <h2>
+          よくある<span class="text-blue">ご質問</span>
+        </h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            税理士と何が違うのですか？
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p class="text-gray">
+              税理士は主に確定申告や税務対策を中心としたサービスを提供しますが、AMSは「利益を生み出す構造」そのものを設計します。具体的には、営業プロセスの改善、見積の標準化、原価管理の徹底など、事業運営の根幹に関わる部分に踏み込んだ支援を行います。税理士と連携しながら、より実務的な視点でのサポートを提供します。
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            製品ごとに原価を出せていないのですが、大丈夫でしょうか？
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p class="text-gray">
+              多くの製造業では、製品ごとの正確な原価計算ができていないケースが一般的です。AMSでは、まず現状の把握から始め、段階的に原価計算の精度を高めていくアプローチを取ります。完璧な原価計算システムがなくても、現状のデータから始めて徐々に精緻化していくことで、確実に利益構造を改善していくことが可能です。
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            どこまでやってくれるのですか？
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p class="text-gray">
+              AMSは単なるコンサルティングではなく、実行支援型のサービスです。現状分析から始まり、改善策の立案、システム導入のサポート、社内ルールの整備、スタッフへの教育まで、実際に成果が出るところまで一貫してサポートします。お客様の状況に応じて、必要な支援範囲をカスタマイズすることも可能です。
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            導入にはどれくらいの期間がかかりますか？
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p class="text-gray">
+              企業規模や課題の複雑さによって異なりますが、一般的には3〜6ヶ月程度で基本的な仕組みの構築と運用開始が可能です。ただし、最初の1〜2ヶ月で部分的な改善を始め、早期に効果を実感いただけるようなスケジュールで進めていきます。長期的な伴走支援も可能ですので、段階的な改善を希望される場合はご相談ください。
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            費用はどれくらいかかりますか？
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="accordion-content">
+            <p class="text-gray">
+              企業規模や支援内容によって異なりますが、初期診断と基本設計で50〜100万円程度、その後の実行支援は月額15〜30万円程度が目安となります。ただし、投資対効果は非常に高く、多くのお客様は導入後6ヶ月〜1年程度で投資回収されています。まずは無料相談で、お客様の状況に合わせたプランをご提案させていただきます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="section-blue">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">
+          「売ってるのに儲からない」状態から
+          <br>
+          抜け出しませんか？
+        </h2>
+        <p class="text-lg text-gray mb-8">
+          まずは無料相談で、あなたの会社の現状と課題をお聞かせください。
+          <br>
+          具体的な改善プランをご提案いたします。
+        </p>
+        <div class="flex flex-col flex-row-md gap-4 justify-center">
+          <a href="#" class="btn btn-primary btn-lg text-lg px-8">
+            無料相談を予約する
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+          <a href="#" class="btn btn-outline btn-lg text-lg">
+            資料をダウンロードする
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-gray">※相談は完全無料です。営業目的の連絡はいたしません。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="flex items-center gap-2 font-bold text-xl text-white mb-4">
+            <i class="fas fa-cogs" style="color: #93c5fd;"></i>
+            <span>AMS</span>
+          </div>
+          <p class="text-gray max-w-md">
+            AMSは製造業に特化した利益構造改善サービスです。営業・原価・会計を一体化し、「売ってるのに儲からない」状態から脱却するための支援を提供しています。
+          </p>
+        </div>
+        <div>
+          <h3 class="footer-heading">サービス</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#">原価管理</a>
+            </li>
+            <li>
+              <a href="#">見積標準化</a>
+            </li>
+            <li>
+              <a href="#">営業支援</a>
+            </li>
+            <li>
+              <a href="#">経営コンサルティング</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">お問い合わせ</h3>
+          <ul class="footer-links">
+            <li>〒100-0001</li>
+            <li>東京都千代田区1-1-1</li>
+            <li>AMS東京オフィス</li>
+            <li>TEL: 03-1234-5678</li>
+            <li>
+              <a href="mailto:info@ams-service.jp" style="color: #93c5fd;">
+                info@ams-service.jp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 AMS All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+      
+      accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+          const content = this.nextElementSibling;
+          const isActive = content.classList.contains('active');
+          
+          // Close all accordion items
+          document.querySelectorAll('.accordion-content').forEach(item => {
+            item.classList.remove('active');
+          });
+          
+          // Toggle the clicked item
+          if (!isActive) {
+            content.classList.add('active');
+          }
+          
+          // Update icons
+          document.querySelectorAll('.accordion-trigger i').forEach(icon => {
+            icon.className = 'fas fa-chevron-down';
+          });
+          
+          if (!isActive) {
+            this.querySelector('i').className = 'fas fa-chevron-up';
+          }
+        });
+      });
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('nav');
+      
+      if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', function() {
+          nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+          nav.style.position = nav.style.display === 'flex' ? 'absolute' : '';
+          nav.style.top = nav.style.display === 'flex' ? '4rem' : '';
+          nav.style.left = nav.style.display === 'flex' ? '0' : '';
+          nav.style.width = nav.style.display === 'flex' ? '100%' : '';
+          nav.style.padding = nav.style.display === 'flex' ? '1rem 2rem' : '';
+          nav.style.backgroundColor = nav.style.display === 'flex' ? '#fff' : '';
+          nav.style.boxShadow = nav.style.display === 'flex' ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : '';
+          nav.style.flexDirection = nav.style.display === 'flex' ? 'column' : '';
+          nav.style.gap = nav.style.display === 'flex' ? '1rem' : '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
